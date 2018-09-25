@@ -51,10 +51,12 @@ public class PlayerController : MonoBehaviour {
                 jump = jumpForce;
             }
         }
-        else if (jumpStartTime > 0 && rb2d.velocity.y > 0)
+        else if (jumpStartTime > 0)
         {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
             jumpStartTime = 0;
+            if (rb2d.velocity.y > 0) {
+                rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
+            }
         }
         anim.SetBool("isJumping", jump > 0 || !grounded);
         //Apply all factors to moving
@@ -80,7 +82,6 @@ public class PlayerController : MonoBehaviour {
                 && cp2d.point.x >= c2d.bounds.min.x)
             {
                 grounded = true;
-                jumpStartTime = 0;
                 break;
             }
         }
