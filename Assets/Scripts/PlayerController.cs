@@ -61,6 +61,13 @@ public class PlayerController : MonoBehaviour {
         anim.SetBool("isJumping", jump > 0 || !grounded);
         //Apply all factors to moving
         rb2d.velocity = (Vector2.right * speed) + (Vector2.up * (jump + rb2d.velocity.y));
+
+        //Check Emotes
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            anim.SetBool("isEmoting", !anim.GetBool("isEmoting"));
+        }
+
         //Check ESC
         if (Input.GetKey(KeyCode.Escape))
         {
