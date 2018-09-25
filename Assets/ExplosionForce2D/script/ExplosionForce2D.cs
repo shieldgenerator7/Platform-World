@@ -36,7 +36,7 @@ public class ExplosionForce2D : MonoBehaviour
 				Vector3 mousePos = Input.mousePosition;
 				mousePos.z = 10;
 				Vector3 objPos1 = Camera.main.ScreenToWorldPoint(mousePos);
-				AddExplosionForce(rigidbody2D, Power * 100, objPos1, Radius);
+				AddExplosionForce(GetComponent<Rigidbody2D>(), Power * 100, objPos1, Radius);
 			}
 # endif	
 	
