@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour {
     Rigidbody2D rb2d;
     Collider2D c2d;
     Animator anim;
+    EmoteManager em;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+        em = GetComponent<EmoteManager>();
         //Move Left and Right
         float horizontal = Input.GetAxis("Horizontal");
         float speed = horizontal * movementSpeed;
@@ -64,8 +66,10 @@ public class PlayerController : MonoBehaviour {
 
         //Check Emotes
         if (Input.GetButton("Emote"))
+        if (Input.GetButtonDown("Emote"))
         {
             anim.SetBool("isEmoting", !anim.GetBool("isEmoting"));
+            em.Emoting = !em.Emoting;
         }
 
         //Check ESC

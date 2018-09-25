@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 114465811408765408}
   - component: {fileID: 50533137773064592}
   - component: {fileID: 61568225917458170}
+  - component: {fileID: 114414687918530160}
   m_Layer: 0
   m_Name: guy standing
   m_TagString: Player
@@ -194,6 +195,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114414687918530160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1143358318063288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17587ffcbab3dc4408b016cfdcbc43bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedEmote: {fileID: 0}
+  unlockedEmotes:
+  - {fileID: 11400000, guid: 9f7a6af57ad9b4440af0f7dec243cd01, type: 2}
 --- !u!114 &114465811408765408
 MonoBehaviour:
   m_ObjectHideFlags: 1

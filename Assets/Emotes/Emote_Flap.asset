@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72991d10c1c58614fbc662ffb652a77e, type: 3}
+  m_Name: Emote_Flap
+  m_EditorClassIdentifier: 
+  animationClip: {fileID: 7400000, guid: 232d580a47515cb439ef9144dd65f8d8, type: 2}
