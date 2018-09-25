@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
     public float movementSpeed = 7.0f;
     public float jumpForceInitial = 3.0f;
@@ -17,16 +18,18 @@ public class PlayerController : MonoBehaviour {
     Animator anim;
     EmoteManager em;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         rb2d = GetComponent<Rigidbody2D>();
         c2d = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
-	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
         em = GetComponent<EmoteManager>();
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
         //Move Left and Right
         float horizontal = Input.GetAxis("Horizontal");
         float speed = horizontal * movementSpeed;
@@ -56,7 +59,8 @@ public class PlayerController : MonoBehaviour {
         else if (jumpStartTime > 0)
         {
             jumpStartTime = 0;
-            if (rb2d.velocity.y > 0) {
+            if (rb2d.velocity.y > 0)
+            {
                 rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
             }
         }
@@ -65,10 +69,8 @@ public class PlayerController : MonoBehaviour {
         rb2d.velocity = (Vector2.right * speed) + (Vector2.up * (jump + rb2d.velocity.y));
 
         //Check Emotes
-        if (Input.GetButton("Emote"))
         if (Input.GetButtonDown("Emote"))
         {
-            anim.SetBool("isEmoting", !anim.GetBool("isEmoting"));
             em.Emoting = !em.Emoting;
         }
 
@@ -88,7 +90,7 @@ public class PlayerController : MonoBehaviour {
     {
         foreach (ContactPoint2D cp2d in collision.contacts)
         {
-            if (cp2d.point.y <= c2d.bounds.min.y 
+            if (cp2d.point.y <= c2d.bounds.min.y
                 && cp2d.point.x <= c2d.bounds.max.x
                 && cp2d.point.x >= c2d.bounds.min.x)
             {
