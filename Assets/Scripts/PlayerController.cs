@@ -51,6 +51,11 @@ public class PlayerController : MonoBehaviour {
                 jump = jumpForce;
             }
         }
+        else if (jumpStartTime > 0 && rb2d.velocity.y > 0)
+        {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
+            jumpStartTime = 0;
+        }
         anim.SetBool("isJumping", jump > 0 || !grounded);
         //Apply all factors to moving
         rb2d.velocity = (Vector2.right * speed) + (Vector2.up * (jump + rb2d.velocity.y));
