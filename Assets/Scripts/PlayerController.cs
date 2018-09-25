@@ -13,11 +13,13 @@ public class PlayerController : MonoBehaviour {
     private float jumpStartTime;//when the jump last started
 
     Rigidbody2D rb2d;
+    Collider2D c2d;
     Animator anim;
 
 	// Use this for initialization
 	void Start () {
         rb2d = GetComponent<Rigidbody2D>();
+        c2d = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
 	}
 	
@@ -38,7 +40,7 @@ public class PlayerController : MonoBehaviour {
         float jump = 0;
         if (Input.GetButton("Jump"))
         {
-            if (jumpStartTime == 0)
+            if (grounded && jumpStartTime == 0)
             {
                 jumpStartTime = Time.time;
                 grounded = false;
@@ -66,7 +68,16 @@ public class PlayerController : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        grounded = true;
-        jumpStartTime = 0;
+        foreach (ContactPoint2D cp2d in collision.contacts)
+        {
+            if (cp2d.point.y <= c2d.bounds.min.y 
+                && cp2d.point.x <= c2d.bounds.max.x
+                && cp2d.point.x >= c2d.bounds.min.x)
+            {
+                grounded = true;
+                jumpStartTime = 0;
+                break;
+            }
+        }
     }
 }
